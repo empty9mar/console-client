@@ -39,14 +39,14 @@
 #define PARENT_FOLDER_NAME "parentname"
 
 //Parser delimeter symbols
-#define DELIM_SEMICOLON ';'
+#define DELIM_SEMICOLON ";"
 
 #if defined(P_OS_WINDOWS)
 #define DELIM_DIR   '\\'
 #endif
 
 #if defined(P_OS_LINUX)
-#define DELIM_DIR  '/'
+#define DELIM_DIR  "/"
 #endif
 
 #if defined(P_OS_MACOSX)

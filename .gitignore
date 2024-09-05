@@ -1,2 +1,13 @@
 *.o
 *.a
+*.swp
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+install_manifest.txt
+lib/mbedtls/Makefile
+lib/mbedtls/library/Makefile
+libpcloudcc_lib.so
+pcloudcc
+

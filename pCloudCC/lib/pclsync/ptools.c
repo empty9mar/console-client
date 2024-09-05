@@ -4,6 +4,7 @@
  * Library containing tool functions, not used in the main 
  * functionality. Keeping statistics, getting data for them etc.
  */
+#include <stdio.h>
 #include "ptools.h"
 #include "psettings.h"
 #include "plibs.h"
@@ -28,7 +29,6 @@
 
 #if defined(P_OS_MACOSX)
 #include <unistd.h>
-#include <stdio.h>
 #endif
 
 /*************************************************************/
@@ -177,7 +177,7 @@ int create_backend_event(const char*  binapi,
       }
 
       if (params->Params[i].paramtype == 2) {
-        paramsLocal[mpCnt + i] = (binparam)P_BOOL(charBuff, params->Params[i].num);
+        paramsLocal[mpCnt + i] = (binparam)P_BOOL(*charBuff, params->Params[i].num);
         continue;
       }
     }
@@ -411,7 +411,7 @@ void parse_os_path(char* path, folderPath* folders, char* delim, int mode) {
     if (path[i] != delim) {
       if ((path[i] == ':') && (mode == 1)) {
         //In case we meet a ":" as in C:\ we set the name to Drive + the string before the ":"
-        fName[k] = NULL;
+        fName[k] = '\0';
         buff = psync_strcat("Drive ", &fName, NULL);
         psync_strlcpy(fName, buff, strlen(buff)+1);
 
@@ -527,7 +527,7 @@ int set_be_file_dates(uint64_t fileid, time_t ctime, time_t mtime) {
     &requiredParams1,
     &optionalParams,
     &retData,
-    msgErr
+    (char **)msgErr
   );
 
   debug(D_NOTICE, "cTime res: [%d]", callRes);
@@ -549,7 +549,7 @@ int set_be_file_dates(uint64_t fileid, time_t ctime, time_t mtime) {
     &requiredParams,
     &optionalParams,
     &retData,
-    msgErr
+    (char **)msgErr
   );
 
   debug(D_NOTICE, "mTime res: [%d]", callRes);
