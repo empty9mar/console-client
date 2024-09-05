@@ -6,7 +6,7 @@ namespace po = boost::program_options;
 #include "control_tools.h"
 namespace ct = control_tools;
 
-static std::string version = "2.0.1";
+static std::string version = "2.0.1-gjb";
 
 int main(int argc, char **argv) {
   std::cout << "pCloud console client v."<< version << std::endl;
